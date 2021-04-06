@@ -8,11 +8,13 @@ const mongoUserPass = mongoConfig.username
 
 const mongoURL = `mongodb://${mongoUserPass}${mongoConfig.host}:${mongoConfig.port}/${mongoConfig.database}`;
 
-mongoose.connect(mongoURL, {
+const mongooseOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false,
-});
+};
+
+mongoose.connect(mongoURL, mongooseOptions);
 
 export default mongoose;
