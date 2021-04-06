@@ -13,7 +13,6 @@ export default class AuthenticateService {
     }
 
     const token = jwt.sign({ id: user._id }, authConfig.secret);
-    console.log(token);
     return {
       token: token,
       user,
