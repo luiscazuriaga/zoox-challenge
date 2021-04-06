@@ -22,7 +22,9 @@
       "@configs/*": ["./src/configs/*"],
       "@services/*": ["./src/services/*"],
       "@utils/*": ["./src/utils/*"],
-      "@interfaces/*": ["./src/interfaces/*"]
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
+      "@routes/*": ["./src/routes/*"]
     }
   },
   "include": ["src/**/*"]

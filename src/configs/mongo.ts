@@ -13,5 +13,3 @@ export default {
   password: process.env.MONGO_PASSWORD,
   database: process.env.MONGO_DB,
 } as MongoConfig;
-//for create user on mongoDb
-// db.createUser({user:"teste",pwd:"123",roles:[{role:"userAdminAnyDatabase", db:"admin"}]})

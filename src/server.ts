@@ -1,17 +1,17 @@
 import "reflect-metadata";
 import express from "express";
 import cors from "cors";
-import config from "@configs/config";
-import logger from "@configs/logging";
-import routes from "./routes/routes";
 
+import config from "@configs/config";
+import logger from "@middlewares/logging";
+import routes from "@routes/routes";
+import setup from "@configs/swaggerConfig";
 import "./database/index";
-import { resolveConfig } from "prettier";
 
 const NAMESPACE = "Server";
 const app = express();
 
-// Logging resquests
+// Logs
 app.use((req, res, next) => {
   // MONTAR NO LOGGING CASO NÃO APAREÇA EM OUTRO LUGAR
   const logBase = `METHOD - [${req.method}],
@@ -27,9 +27,13 @@ app.use((req, res, next) => {
 app.use(cors());
 app.use(express.json());
 
-// routes
+// Routes
 app.use("/api/v1", routes);
 
+// Swagger
+setup(app);
+
+//Server
 app.listen(config.server.port, () =>
   logger(
     "log",

@@ -22,6 +22,8 @@ module.exports = {
           "@services": "./src/services",
           "@utils": "./src/utils",
           "@interfaces": "./src/interfaces",
+          "@middlewares/*": "./src/middlewares/*",
+          "@routes/*": "./src/routes/*",
         },
       },
     ],

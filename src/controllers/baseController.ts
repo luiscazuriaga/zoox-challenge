@@ -1,10 +1,9 @@
-import BaseService from "@services/baseService";
+import BaseService from "@services/mongoose/baseService";
 import sortData from "@utils/sortData";
 import { Request, Response } from "express";
 
 export default class BaseController {
   service: BaseService<any>;
-  // alterar any para object do BaseService
   constructor(service: BaseService<any>) {
     this.service = service;
   }
@@ -15,7 +14,7 @@ export default class BaseController {
 
       return res.status(201).send({ resource });
     } catch (err) {
-      res.status(400).send({ error: err });
+      res.status(500).send({ error: err });
     }
   };
 

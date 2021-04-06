@@ -1,28 +1,25 @@
 import { Schema, Model as ModelInterface, model } from "mongoose";
 import { singleton } from "tsyringe";
 
-import StateSI from "@interfaces/stateInterface";
+import SessionSI from "@interfaces/sessionInterface";
 import ModelI from "@interfaces/modelInterface";
 
 @singleton()
-export default class StateModel implements ModelI {
+export default class SessionModel implements ModelI {
   schema: Schema<any> = new Schema(
     {
-      nome: {
+      email: {
         type: String,
         require: true,
-        required: [true, "O campo 'nome' é obrigatorio"],
+        required: [true, "O campo 'email' é obrigatorio"],
         unique: true,
       },
 
-      abreviacao: {
+      password: {
         type: String,
         require: true,
-        required: [true, "O campo 'abreviacao' é obrigatorio"],
-        uppercase: true,
-        unique: true,
-        minLength: 2,
-        maxLength: 2,
+        required: [true, "O campo 'password' é obrigatorio"],
+        select: true,
       },
     },
     {
@@ -32,5 +29,5 @@ export default class StateModel implements ModelI {
       },
     }
   );
-  model: ModelInterface<any, any> = model<StateSI>("State", this.schema);
+  model: ModelInterface<any, any> = model<SessionSI>("Session", this.schema);
 }
